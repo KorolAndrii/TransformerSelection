@@ -1,0 +1,11 @@
+/*
+ * Specific styles of signin component
+ */
+/*
+ * General styles
+ */
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(165, 194, 206), rgb(68, 165, 94));
+}

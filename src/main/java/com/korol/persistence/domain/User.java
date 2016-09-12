@@ -22,13 +22,24 @@ public class User {
     @Column (name = "last_name")
     private String lastName;
     @Column (name = "username")
-    private String username;
+    private String userName;
     @Column (name = "password")
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role")
     private Role role;
+
+    // TODO: 11.09.2016
+    public User(User user){
+        this.id = user.getId();
+        this.firstName = user.getFirstName();
+        this.secondName = user.getSecondName();
+        this.lastName = user.getLastName();
+        this.userName = user.getUserName();
+        this.password = user.getPassword();
+        this.role = user.getRole();
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -43,7 +54,7 @@ public class User {
                 .append(firstName, user.firstName)
                 .append(secondName, user.secondName)
                 .append(lastName, user.lastName)
-                .append(username, user.username)
+                .append(userName, user.userName)
                 .append(password, user.password)
                 .append(role, user.role)
                 .isEquals();
@@ -56,7 +67,7 @@ public class User {
                 .append(firstName)
                 .append(secondName)
                 .append(lastName)
-                .append(username)
+                .append(userName)
                 .append(password)
                 .append(role)
                 .toHashCode();
@@ -78,6 +89,9 @@ public class User {
         this.firstName = firstName;
     }
 
+    public User() {
+    }
+
     public String getSecondName() {
         return secondName;
     }
@@ -94,12 +108,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -116,5 +130,18 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role.getRoleName() +
+                '}';
     }
 }

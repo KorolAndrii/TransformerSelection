@@ -15,7 +15,7 @@ public class TransParams {
     @GeneratedValue
     @Column(name = "id")
     private Long id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_trans_type")
     private TransType transType;
     @Column(name = "power")

@@ -20,7 +20,7 @@ public class TransType {
     private String typeName;
     @Column(name = "voltage")
     private Long voltage;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "transType")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "transType")
     private List<TransParams> transParams;
 
     public Long getId() {
